@@ -14,7 +14,7 @@ print()
 print("-----------------------------------------------   STEP TWO   -----------------------------------------------")
 largest = np.max(salesArray)
 smallest = np.min(salesArray)
-print('Largest Sale: ', largest)
+print('Largest Sale:  ', largest)
 print('Smallest Sale: ', smallest)
 print()
 
@@ -33,34 +33,15 @@ print()
 ## Step 5: Superstore is a cashless store and needs to calculate their owed credit card fees. Each sale is subject to a 2% credit card fee.
 #           Using the salesArray, create a new array that stores the 2% fee for each sale and register. Print the array and then print the total fees.
 print("-----------------------------------------------   STEP FIVE  -----------------------------------------------")
-credit_array = []
-for i in range (len(salesArray)):
-    x = []
-    for r in range(len(salesArray[0])):
-        c = 0.02 * salesArray[i][r]
-        c = (round(c, 2))
-        x.append(c)
-    credit_array.append(x)
-total_fees = sum(map(sum, credit_array))
-for i in credit_array:
-    print(i)
-print('Total Fees : ', round(total_fees, 2))
+credit_array = 0.02 * salesArray
+print(str(credit_array))
+print('Total Fees : ' , str('{0:.2f}'.format(credit_array.sum())))
 print()
 
 ## Step 6: Using your fee array and salesArray, calculate how much profit Superstore made for each sale after paying credit card fees. Store this in a new array and print it.
 print("-----------------------------------------------   STEP SIX  -----------------------------------------------")
-profit_array = []
-for i in range(len(credit_array)):
-    y = []
-    for r in range(len(credit_array[0])):
-        a = salesArray[i][r] - credit_array[i][r]
-        a = round(a, 2)
-        y.append(a)
-    profit_array.append(y)
-total_profit = sum(map(sum, profit_array))
-for i in profit_array:
-    print(i)
-print('Total profit : ', total_profit)
+profit_array = salesArray - credit_array
+print('Total profit per sale :\n', profit_array)
 print()
 
 ## Step 7: Print the sales only for the second and forth cash register
@@ -71,21 +52,16 @@ print()
 
 ## Step 8: Superstore has added a 5th cash register who's data is stored in the array newRegister. Add the new register to the original array. Print the updated salesArray.
 print("-----------------------------------------------   STEP EIGHT  -----------------------------------------------")
-newRegister = np.array([[17.89,13.59,107.89,176.88,56.78]])
-salesArray = np.concatenate((salesArray, newRegister), axis=0)
-for i in salesArray:
-    print(i)
+newRegister = np.array([17.89,13.59,107.89,176.88,56.78])
+salesArray = np.vstack([salesArray, newRegister])
+print(salesArray)
 print()
 
 ## Step 9: Register #3 had an error and recorded it's fourth sale ($200.14) incorrectly. The sale should have been $20.14. Update the array to correct this error.
 #           Print the array before and after the update to see the change.
 print("-----------------------------------------------   STEP NINE  -----------------------------------------------")
-print('Before Update : ')
-for i in salesArray:
-    print(i)
+print('Before Update :\n', salesArray)
 salesArray[2][3] = 20.14
-print('After Update : ')
-for i in salesArray:
-    print(i)
+print('After Update :\n', salesArray)
 print()
 
